@@ -68,7 +68,17 @@ Examples: AbstractCollection<E> has an abstract method called iterator()
 `Allow us to make copies of existing object avoiding having to recreate objects from scratch`
 
 A complex object that is costly to create may be re-created using and existing instance
+Should pay attention to the requirement of deep or shallow copy of object state
 
 Examples: Object.clone()
 
 ### 6.5 Abstract Factory
+`Allows to produce families of related objects without specifying their concrete classes`
+
+Usefull when we need to work with sets or kits of related classes that are related to produce something or wish to constraint object creation so that they all work together
+
+Factories can be singletons
+Adding a new class type requires changes to the base factory
+
+Examples: DocumentBuilderFactory (not 100%)
+
