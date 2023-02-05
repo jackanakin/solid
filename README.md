@@ -122,7 +122,16 @@ Example: ThreadPoolExecutor, apache BasicDataSource
 ### 7.1 Adapter aka Wrapper
 `Allows objects with incompatible interfaces to collaborate`
 
-Class adapter (two-way) - Uses inheritance: the adapter inherits interfaces from both objects at the same time
+Class adapter (two-way) - AVOID CLASS ADAPTERS! - Uses inheritance: the adapter inherits interfaces from both objects at the same time
 
 Object adapter - Uses the object composition principle: the adapter implements the interface of one object and wraps the other one
 
+Examples: InputStreamReader, OutputStreamWriter
+
+### 7.2 Bridge
+`Allows to split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation which can be developed independently of each other`
+
+Using Bridge, we can change "how" a functionality is implemented without modifying classes used by the client<br/>
+Bridge pattern uses composition to connect two inheritance hierachy
+
+Examples: java.sql.Driver
