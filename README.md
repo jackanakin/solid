@@ -82,3 +82,14 @@ Adding a new class type requires changes to the base factory
 
 Examples: DocumentBuilderFactory (not 100%)
 
+### 6.6 Singleton
+`Ensures that a class has only one instance, while providing a global access point to this instance`
+
+Declare constructor private, provide a getInstance method for global access
+
+Eager - Creates the instance ASAP
+Lazy with Double Checked Looking (Classic) - Creates the instance only when needed, must aquire thread lock and deal with sync. problems
+Lazy with Initialization Holder Class - Creates an inner holder to avoid having sync. and threadlock issues
+Enum - Deals with serealization problems
+
+Examples: java.lang.Runtime
