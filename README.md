@@ -3,7 +3,7 @@
 ## 1 - Single Responsability Principle
 `There should never have more than one reason for a class to change`
 
-A class should have a focused, single functionality or address a specific concern. Ideally, each responsability should be in a separete class.
+A class should have a focused, single functionality or address a specific concern. Ideally, each responsability should be in a separate class.
 
 [Java Example](https://github.com/jackanakin/solid/tree/main/java/1%20-%20Single%20Responsability%20Principle)
 
@@ -46,10 +46,20 @@ Example: Spring @Autowire annotation
 Examples: StringBuilder (not 100%) and Calendar
 
 ### 6.2 Simple Factory
-`Method that separete and encapsulate the instantiation of an object, commonly to a static method`
+`Method that separate and encapsulate the instantiation of an object, commonly to a static method`
 
 Simply moves instantiation logic away from main code avoiding importing unrelated classes
 Knows about all classes objects it can create
 May combined to use Builder pattern to create and object
 
 Examples: NumberFormat
+
+### 6.3 Factory Method
+
+Moves object creation logic from main code to separate class
+The creator can be concrete class and provide a default implementation
+Don't need to know which class to instantiate and allows new classes to be added withou affecting main code
+Subclasses decide which object to instantiate by overriding factory method
+May be combined with Simple Factory
+
+Examples: AbstractCollection<E> has an abstract method called iterator()

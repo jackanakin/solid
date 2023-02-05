@@ -1,0 +1,3 @@
+interface MessageCreator {
+    Message createMessage();
+}
