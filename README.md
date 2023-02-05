@@ -49,7 +49,9 @@ Examples: StringBuilder (not 100%) and Calendar
 `Method that separate and encapsulate the instantiation of an object, commonly to a static method`
 
 Simply moves instantiation logic away from main code avoiding importing unrelated classes
+
 Knows about all classes objects it can create
+
 May combined to use Builder pattern to create and object
 
 Examples: NumberFormat
@@ -57,9 +59,13 @@ Examples: NumberFormat
 ### 6.3 Factory Method
 
 Moves object creation logic from main code to separate class
+
 The creator can be concrete class and provide a default implementation
+
 Don't need to know which class to instantiate and allows new classes to be added withou affecting main code
+
 Subclasses decide which object to instantiate by overriding factory method
+
 May be combined with Simple Factory
 
 Examples: AbstractCollection<E> has an abstract method called iterator()
@@ -68,6 +74,7 @@ Examples: AbstractCollection<E> has an abstract method called iterator()
 `Allow us to make copies of existing object avoiding having to recreate objects from scratch`
 
 A complex object that is costly to create may be re-created using and existing instance
+
 Should pay attention to the requirement of deep or shallow copy of object state
 
 Examples: Object.clone()
@@ -78,6 +85,7 @@ Examples: Object.clone()
 Usefull when we need to work with sets or kits of related classes that are related to produce something or wish to constraint object creation so that they all work together
 
 Factories can be singletons
+
 Adding a new class type requires changes to the base factory
 
 Examples: DocumentBuilderFactory (not 100%)
@@ -87,9 +95,23 @@ Examples: DocumentBuilderFactory (not 100%)
 
 Declare constructor private, provide a getInstance method for global access
 
+Are held by class loader and not per JVM
+
 Eager - Creates the instance ASAP
-Lazy with Double Checked Looking (Classic) - Creates the instance only when needed, must aquire thread lock and deal with sync. problems
+
+Lazy with Double Checked Locking (Classic) - Creates the instance only when needed, must aquire thread lock and deal with sync. problems
+
 Lazy with Initialization Holder Class - Creates an inner holder to avoid having sync. and threadlock issues
+
 Enum - Deals with serealization problems
 
 Examples: java.lang.Runtime
+
+### 6.7 Object Pool
+`Usefull when the cost of creating an instance of a class is high and a large number of objects of this class is needed for a short duration`
+
+Create a class for object pool with a thread-safe caching of objects and add a method to acquire and release objects, pool should also reset the object before giving it out
+
+We should choose an aproach when are no more objects available to give out, create a new instance of the object or wait for one to be available
+
+Example: ThreadPoolExecutor, apache BasicDataSource
