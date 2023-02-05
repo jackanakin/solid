@@ -43,3 +43,13 @@ Example: Spring @Autowire annotation
 ### 6.1 Builder 
 `Usefull when there is a complex process to construct an object, also, abstracts logic related to the object and allows immutable class creation`
 
+Examples: StringBuilder (not 100%) and Calendar
+
+### 6.2 Simple Factory
+`Method that separete and encapsulate the instantiation of an object, commonly to a static method`
+
+Simply moves instantiation logic away from main code avoiding importing unrelated classes
+Knows about all classes objects it can create
+May combined to use Builder pattern to create and object
+
+Examples: NumberFormat
