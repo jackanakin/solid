@@ -135,3 +135,12 @@ Using Bridge, we can change "how" a functionality is implemented without modifyi
 Bridge pattern uses composition to connect two inheritance hierachy
 
 Examples: java.sql.Driver
+
+### 7.3 Decorator
+`Allows to attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors`
+
+Add new functionality on top of what already exist in the existing object<br/>
+We can wrap a decorator with another and derive some functionality which builds on top of what is provided
+
+Examples: BufferedOutputStream decorates any OutputStream object and adds buffering to file writing operation
+
