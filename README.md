@@ -115,3 +115,14 @@ Create a class for object pool with a thread-safe caching of objects and add a m
 We should choose an aproach when are no more objects available to give out, create a new instance of the object or wait for one to be available
 
 Example: ThreadPoolExecutor, apache BasicDataSource
+
+## 7 - Structural Design Patterns
+`Deal with how classes and objects are arranged or composed`
+
+### 7.1 Adapter aka Wrapper
+`Allows objects with incompatible interfaces to collaborate`
+
+Class adapter (two-way) - Uses inheritance: the adapter inherits interfaces from both objects at the same time
+
+Object adapter - Uses the object composition principle: the adapter implements the interface of one object and wraps the other one
+
