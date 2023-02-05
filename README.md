@@ -63,3 +63,12 @@ Subclasses decide which object to instantiate by overriding factory method
 May be combined with Simple Factory
 
 Examples: AbstractCollection<E> has an abstract method called iterator()
+
+### 6.4 Prototype
+`Allow us to make copies of existing object avoiding having to recreate objects from scratch`
+
+A complex object that is costly to create may be re-created using and existing instance
+
+Examples: Object.clone()
+
+### 6.5 Abstract Factory
