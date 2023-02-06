@@ -144,3 +144,13 @@ We can wrap a decorator with another and derive some functionality which builds 
 
 Examples: BufferedOutputStream decorates any OutputStream object and adds buffering to file writing operation
 
+### 7.4 Composite
+`Allows to compose objects into tree structures and then work with these structures as if they were individual objects`
+
+Two basic element types that share a common interface: simple leaves and complex containers. A container can be composed of both leaves and other containers. This lets you construct a nested recursive object structure that resembles a tree<br/>
+Use the pattern when you want the client code to treat both simple and complex elements uniformly
+
+Without Composite pattern client code will have to write different code to handle object which has children. Composite pattern allows client to call a method on object and pattern takes care of handling children if present<br/>
+You can treat them all the same via the common interface. When you call a method, the objects themselves pass the request down the tree
+
+Examples: UI Frameworks, JSF UIViewRoot
