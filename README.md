@@ -196,3 +196,10 @@ A request may go unprocessed and client may not know it<br/>
 
 Examples: javax.servlet.Filter
 
+### 8.2 Command aka Action, Transaction
+`Turns a request into a stand-alone object that contains all information about the request, allowing you to pass requests as a method arguments, delay or queue a request’s execution, and support undoable operations`
+
+Allows to represent an operation/request/method-call as object and/or send requests to other parts of the application where they can be executed later.<br/>
+Makes easy to implement reversible operations, queue operations, schedule their execution, or execute them remotely.
+
+Examples: Runnable
