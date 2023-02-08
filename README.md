@@ -182,3 +182,17 @@ Applicability: Lazy initialization (virtual proxy), Access control (protection p
 Java can create dynamic proxy for a class which implements at least one interface
 
 Examples: Lazy loading of collections by Hibernate
+
+## 8 - Behavioral Design Patterns
+`Deals with algorithms and the assignment of responsibilities between objects`
+
+### 8.1 Chain of Responsibility
+`Allows to pass requests along a chain of handlers, then each handler decides either to process the request or to pass it to the next handler in the chain`
+
+Usefull when the program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.<br/>
+When it’s essential to execute several handlers in a particular order or when the set of handlers and their order are supposed to change at runtime.<br/>
+Each handler knows the next one and passes the request object.<br/>
+A request may go unprocessed and client may not know it<br/>
+
+Examples: javax.servlet.Filter
+
