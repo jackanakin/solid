@@ -154,3 +154,31 @@ Without Composite pattern client code will have to write different code to handl
 You can treat them all the same via the common interface. When you call a method, the objects themselves pass the request down the tree
 
 Examples: UI Frameworks, JSF UIViewRoot
+
+### 7.5 Facade
+`Provides a simplified interface to a library, a framework, or any other complex set of classes`
+
+A facade should minimize the complexity of subsystems and provide usable interface.<br/>
+Allows to have a weak coupling betweeb subsystems.<br/>
+Provides simple methods that represent a use-case functionality provided by subsystem
+
+Example: java.net.URL
+
+### 7.6 Flyweight aka Cache
+`Allows to fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object`
+
+Intrinsic - state that is shared in every context<br/>
+Extrinsic - context specific state
+
+Object itself only stores shared state so one instance is shared, client code maintains part of the state that is specific to context
+
+Example: java.lang.Integer.valueOf uses this pattern to cache Integers
+
+### 7.7 Proxy
+`Allows to provide a substitute or placeholder for another object`
+
+Applicability: Lazy initialization (virtual proxy), Access control (protection proxy), Local execution of a remote service (remote proxy), Logging requests (logging proxy), Caching request results (caching proxy), Smart reference (dismiss heavyweight object).
+
+Java can create dynamic proxy for a class which implements at least one interface
+
+Examples: Lazy loading of collections by Hibernate
