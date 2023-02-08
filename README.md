@@ -203,3 +203,11 @@ Allows to represent an operation/request/method-call as object and/or send reque
 Makes easy to implement reversible operations, queue operations, schedule their execution, or execute them remotely.
 
 Examples: Runnable
+
+### 8.3 Interpreter
+`Allows to process a simple "language" with rules of grammar`
+
+It allows us to represent the rules in a data strucutre and then interpret sentences in the language/grammar.<br/>
+Each class represents a rule in the language, they also provide a method to interpret an expression.<br/>
+
+Example: regex.Pattern
