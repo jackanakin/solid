@@ -211,3 +211,16 @@ It allows us to represent the rules in a data strucutre and then interpret sente
 Each class represents a rule in the language, they also provide a method to interpret an expression.<br/>
 
 Example: regex.Pattern
+
+### 8.4 Mediator aka Intermediary, Controller
+`Reduce chaotic dependencies between objects, restricts direct communications between the objects and forces them to collaborate only via a mediator object`
+
+Intention is to encapsulate complex interaction between objects<br/>
+Many to many communication/interaction
+
+Usefull when:<br/>
+It’s hard to change some of the classes because they are tightly coupled to a bunch of other classes.<br/>
+We can’t reuse a component in a different program because it’s too dependent on other components.<br/>
+Creating tons of component subclasses just to reuse some basic behavior in various contexts.
+
+Examples: javax.swing.ButtonGroup
