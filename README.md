@@ -234,3 +234,15 @@ Reduce duplication of the traversal code across the app.<br/>
 Be able to traverse different data structures or when types of these structures are unknown beforehand.
 
 Examples: java.util.Iterator, Scanner
+
+### 8.6 Memento aka Snapshot
+`Allows to save and restore the previous state of an object without revealing the details of its implementation`
+
+State is sealed except for originator.<br/>
+Needs to be stored for use.<br/>
+Needs a "caretaker" to store it's states
+
+Usefull when:<br/>
+We want to produce snapshots of the object’s state to be able to restore a previous state of the object.<br/>
+Direct access to the object’s fields/getters/setters violates its encapsulation.<br/>
+
