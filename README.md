@@ -224,3 +224,13 @@ We can’t reuse a component in a different program because it’s too dependent
 Creating tons of component subclasses just to reuse some basic behavior in various contexts.
 
 Examples: javax.swing.ButtonGroup
+
+### 8.5 Iterator
+`Allows to traverse elements of a collection without exposing its underlying representation (list, stack, tree, etc.)`
+
+Usefull when:<br/>
+Collection has a complex data structure under the hood, but you want to hide its complexity from clients.<br/>
+Reduce duplication of the traversal code across the app.<br/>
+Be able to traverse different data structures or when types of these structures are unknown beforehand.
+
+Examples: java.util.Iterator, Scanner
