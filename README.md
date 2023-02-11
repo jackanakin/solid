@@ -303,3 +303,20 @@ Need to let clients extend only particular steps of an algorithm, but not the wh
 Have several classes that contain almost identical algorithms with some minor differences.<br/>
 
 Examples: java.util.AbstractMap
+
+### 8.11 Visitor
+`Allows to separate algorithms from the objects on which they operate`
+
+Visitor can work with objects of classes which do not have a common parent, they define class specific methods<br/>
+Visitors often need access to internal state of objects.<br/>
+Adding new functionality is simple as adding a new visitor class.<br/>
+Visitor can also store state.<br/>
+All visitor subclasses provide possibly different functionalities from each other.<br/>
+
+
+Usefull when:<br/>
+Have to perform an operation on all elements of a complex object structure (for example, an object tree).<br/>
+Have to clean up the business logic of auxiliary behaviors.<br/>
+A behavior makes sense only in some classes of a class hierarchy, but not in others.<br/>
+
+Example: java.nio.file.FileVisitor
