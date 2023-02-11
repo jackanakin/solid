@@ -320,3 +320,14 @@ Have to clean up the business logic of auxiliary behaviors.<br/>
 A behavior makes sense only in some classes of a class hierarchy, but not in others.<br/>
 
 Example: java.nio.file.FileVisitor
+
+### 8.12 Null Object
+`Provide an alternative representation to indicate an absence of object`
+
+They never create/transform a real object.<br/>
+Method implementations of Null object should not cause any changes in application state, it's job is to do nothing<br/>
+
+Usefull when:<br/>
+Treat absence of object transparently without null check.<br/>
+
+Example: java.awt.event.MouseAdapter
