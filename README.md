@@ -189,10 +189,13 @@ Examples: Lazy loading of collections by Hibernate
 ### 8.1 Chain of Responsibility
 `Allows to pass requests along a chain of handlers, then each handler decides either to process the request or to pass it to the next handler in the chain`
 
-Usefull when the program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.<br/>
-When it’s essential to execute several handlers in a particular order or when the set of handlers and their order are supposed to change at runtime.<br/>
-Each handler knows the next one and passes the request object.<br/>
+Chain of Responsibility passes a request sequentially along a dynamic chain of potential receivers until one of them handles it.
 A request may go unprocessed and client may not know it<br/>
+Each handler knows the next one and passes the request object.<br/>
+
+Usefull when:<br/>
+The program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.<br/>
+It’s essential to execute several handlers in a particular order or when the set of handlers and their order are supposed to change at runtime.<br/>
 
 Examples: javax.servlet.Filter
 
@@ -200,7 +203,8 @@ Examples: javax.servlet.Filter
 `Turns a request into a stand-alone object that contains all information about the request, allowing you to pass requests as a method arguments, delay or queue a request’s execution, and support undoable operations`
 
 Allows to represent an operation/request/method-call as object and/or send requests to other parts of the application where they can be executed later.<br/>
-Makes easy to implement reversible operations, queue operations, schedule their execution, or execute them remotely.
+Makes easy to implement reversible operations, queue operations, schedule their execution, or execute them remotely.<br/>
+Command establishes unidirectional connections between senders and receivers.<br/>
 
 Examples: Runnable
 
@@ -216,7 +220,8 @@ Example: regex.Pattern
 `Reduce chaotic dependencies between objects, restricts direct communications between the objects and forces them to collaborate only via a mediator object`
 
 Intention is to encapsulate complex interaction between objects<br/>
-Many to many communication/interaction
+Many to many communication/interaction<br/>
+Mediator eliminates direct connections between senders and receivers, forcing them to communicate indirectly via a mediator object.<br/>
 
 Usefull when:<br/>
 It’s hard to change some of the classes because they are tightly coupled to a bunch of other classes.<br/>
@@ -246,3 +251,55 @@ Usefull when:<br/>
 We want to produce snapshots of the object’s state to be able to restore a previous state of the object.<br/>
 Direct access to the object’s fields/getters/setters violates its encapsulation.<br/>
 
+### 8.7 Observer aka Event-Subscriber, Listener
+`Allows to define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing`
+
+Observer lets receivers dynamically subscribe to and unsubscribe from receiving requests.<br/>
+One to many communication/interaction.<br/>
+Observer can notify other objects not only when its state changes but also on some other event occurs like a method is called on the object.
+
+Usefull when:<br/>
+Changes to the state of one object may require changing other objects, and the actual set of objects is unknown beforehand or changes dynamically.<br/>
+Some objects in the app must observe others, but only for a limited time or in specific cases.<br/>
+
+Examples: HttpServletListener
+
+### 8.8 State
+`Allows to an object alter its behavior when its internal state changes. It appears as if the object changed its class`
+
+State pattern is about behavior and separating that behavior in a nice organized classes, effect of calling a method depends on current of the object.<br/>
+Implements actual behavior of an object specific to a particular state.<br/>
+State object represents current state of our context object.<br/>
+
+Usefull when:<br/>
+Have an object that behaves differently depending on its current state, the number of states is enormous, and the state-specific code changes frequently.<br/>
+Have a class polluted with massive conditionals that alter how the class behaves according to the current values of the class’s fields.<br/>
+Have a lot of duplicate code across similar states and transitions of a condition-based state machine.
+
+Examples: JSF LifeCycle
+
+### 8.9 Strategy
+`Allows to define a family of algorithms, put each of them into a separate class, and make their objects interchangeable`
+
+Encapsulate one/many algorithms in classes allowing to change the algorithm used to perform an operation.<br/>
+One class per algorithm.
+
+Usefull when:<br/>
+Have to use different variants of an algorithm within an object and be able to switch from one algorithm to another during runtime.<br/>
+Have a lot of similar classes that only differ in the way they execute some behavior.<br/>
+Have to isolate the business logic of a class from the implementation details of algorithms that may not be as important in the context of that logic.<br/>
+Have a class with massive conditional statements that switches between different variants of the same algorithm.
+
+Examples: java.util.Comparator
+
+### 8.10 Template Method
+`Allows to define the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure`
+
+Steps are abstract methods in the base class, subclasses override them and provide diferent implementations.<br/>
+All subclasses must override the steps.<br/>
+
+Usefull when:<br/>
+Need to let clients extend only particular steps of an algorithm, but not the whole algorithm or its structure.<br/>
+Have several classes that contain almost identical algorithms with some minor differences.<br/>
+
+Examples: java.util.AbstractMap
