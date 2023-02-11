@@ -41,78 +41,89 @@ Example: Spring @Autowire annotation
 `Deal with the creation of objects of classes`
 
 ### 6.1 Builder 
-`Usefull when there is a complex process to construct an object, also, abstracts logic related to the object and allows immutable class creation`
+`Allows to construct complex objects step by step and to produce different types and representations of an object using the same construction code`
+
+Usefull when:<br/>
+There is a complex process to construct an object.<br/>
+Allows immutable class creation.<br/>
+Have to construct Composite trees or other complex objects.
 
 Examples: StringBuilder (not 100%) and Calendar
 
 ### 6.2 Simple Factory
 `Method that separate and encapsulate the instantiation of an object, commonly to a static method`
 
-Simply moves instantiation logic away from main code avoiding importing unrelated classes
-
-Knows about all classes objects it can create
-
-May combined to use Builder pattern to create and object
+Simple factory uses a criteria to choose which object to initialize.<br/>
+Simply moves instantiation logic away from main code avoiding importing unrelated classes.<br/>
+Knows about all classes objects it can create.<br/>
+May be combined to use Builder pattern to create and object.<br/>
 
 Examples: NumberFormat
 
-### 6.3 Factory Method
+### 6.3 Factory Method aka Virtual Constructor
+`Provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created`
 
-Moves object creation logic from main code to separate class
-
-The creator can be concrete class and provide a default implementation
-
-Don't need to know which class to instantiate and allows new classes to be added withou affecting main code
-
-Subclasses decide which object to instantiate by overriding factory method
-
-May be combined with Simple Factory
+Moves object creation logic from main code to separate class.<br/>
+The creator can be concrete class and provide a default implementation.<br/>
+Don't need to know which class to instantiate and allows new classes to be added without affecting main code.<br/>
+Subclasses decide which object to instantiate by overriding factory method.<br/>
+May be combined with Simple Factory.<br/>
 
 Examples: AbstractCollection<E> has an abstract method called iterator()
 
 ### 6.4 Prototype
-`Allow us to make copies of existing object avoiding having to recreate objects from scratch`
+`Allows to make copies of existing object avoiding having to recreate objects from scratch`
 
-A complex object that is costly to create may be re-created using and existing instance
+Copies an existing object to create a separate new object.<br/>
+While implementing, attention to the requirement of deep or shallow copy of object state.<br/>
 
-Should pay attention to the requirement of deep or shallow copy of object state
+Usefull when:<br/>
+A complex object that is costly to create may be re-created using and existing instance.<br/>
+When code shouldn’t depend on the concrete classes of objects that you need to copy.<br/>
 
 Examples: Object.clone()
 
 ### 6.5 Abstract Factory
 `Allows to produce families of related objects without specifying their concrete classes`
 
-Usefull when we need to work with sets or kits of related classes that are related to produce something or wish to constraint object creation so that they all work together
+Factories can be singletons.<br/>
+Client code is unaware of the concrete factory class that it is using as well as the products. Client code works with interface or abstract class references.<br/>
+A product family has classes whose objects work with each other to achieve some functionality. These classes can belong to different inheritance hierachy.<br/>
 
-Factories can be singletons
-
-Adding a new class type requires changes to the base factory
+Usefull when:<br/>
+Have to work with sets or kits of related classes that are related to produce something.<br/>
+Have to constraint object creation so that they all work together.<br/>
 
 Examples: DocumentBuilderFactory (not 100%)
 
 ### 6.6 Singleton
 `Ensures that a class has only one instance, while providing a global access point to this instance`
 
-Declare constructor private, provide a getInstance method for global access
+Any mutable state of a singleton is a global state.<br/>
+Simply declare the constructor private and provide a getInstance method for global access.<br/>
+Instances are held by class loader and not per JVM.<br/>
 
-Are held by class loader and not per JVM
+Best option of type is Lazy with Initialization Holder Class.<br/>
 
-Eager - Creates the instance ASAP
-
-Lazy with Double Checked Locking (Classic) - Creates the instance only when needed, must aquire thread lock and deal with sync. problems
-
-Lazy with Initialization Holder Class - Creates an inner holder to avoid having sync. and threadlock issues
-
-Enum - Deals with serealization problems
+Types:<br/>
+Eager - Creates the instance ASAP.<br/>
+Lazy with Double Checked Locking (Classic) - Creates the instance only when needed, must aquire thread lock and deal with sync. problems.<br/>
+Lazy with Initialization Holder Class - Creates an inner holder to avoid having sync. and threadlock issues.<br/>
+Enum - Deals with serealization problems.<br/>
 
 Examples: java.lang.Runtime
 
 ### 6.7 Object Pool
 `Usefull when the cost of creating an instance of a class is high and a large number of objects of this class is needed for a short duration`
 
-Create a class for object pool with a thread-safe caching of objects and add a method to acquire and release objects, pool should also reset the object before giving it out
+Create a class for object pool with a thread-safe caching of objects and add a method to acquire and release objects, pool should also reset the object before giving it out.<br/>
+Must choose an aproach when there aren't more objects available to give out: create a new instance of the object or wait for one to be available.<br/>
+Must execute a reset method on the object before returning it to the cache.<br/>
 
-We should choose an aproach when are no more objects available to give out, create a new instance of the object or wait for one to be available
+Usefull when:<br/>
+Object creation cost is very high and each object is used for a short duration as well as large number of such objects are needed.<br/>
+Object Pool can improve application performance.<br/>
+An object represents an external resource which is limited, like database connections.
 
 Example: ThreadPoolExecutor, apache BasicDataSource
 
@@ -122,79 +133,113 @@ Example: ThreadPoolExecutor, apache BasicDataSource
 ### 7.1 Adapter aka Wrapper
 `Allows objects with incompatible interfaces to collaborate`
 
-Class adapter (two-way) - AVOID CLASS ADAPTERS! - Uses inheritance: the adapter inherits interfaces from both objects at the same time
+Types:<br/>
+1. Class adapter (two-way) - AVOID CLASS ADAPTERS! - Uses inheritance: the adapter inherits interfaces from both objects at the same time.<br/>
+They extend from the original class and also inherit from the target interface, so they can be used where either of those interface/class is expected.<br/>
+2. Object adapter - Uses the object composition principle: the adapter implements the interface of one object and wraps the other one.<br/>
 
-Object adapter - Uses the object composition principle: the adapter implements the interface of one object and wraps the other one
+Usefull when:<br/>
+Have to use some existing class, but its interface isn’t compatible with the rest of the code.<br/>
+Have to reuse several existing subclasses that lack some common functionality that can’t be added to the superclass.<br/>
 
 Examples: InputStreamReader, OutputStreamWriter
 
 ### 7.2 Bridge
 `Allows to split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation which can be developed independently of each other`
 
-Using Bridge, we can change "how" a functionality is implemented without modifying classes used by the client<br/>
-Bridge pattern uses composition to connect two inheritance hierachy
+It allows to change "how" a functionality is implemented without modifying classes used by the client.<br/>
+It uses composition to connect two inheritance hierachy.<br/>
+
+Usefull when:<br/>
+Have to divide and organize a monolithic class that has several variants of some functionality (for example, if the class can work with various database servers).
+Have to extend a class in several orthogonal (independent) dimensions.<br/>
+Have to be able to switch implementations at runtime.<br/>
 
 Examples: java.sql.Driver
 
-### 7.3 Decorator
-`Allows to attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors`
+### 7.3 Decorator aka Wrapper
+`Allows to attach new behaviors to objects by placing these objects inside special wrapper objects that contain the new behaviors`
 
-Add new functionality on top of what already exist in the existing object<br/>
-We can wrap a decorator with another and derive some functionality which builds on top of what is provided
+It allows to add new functionality on top of what already exist in the existing object.<br/>
+A decorator can be wrapped with another and derive some functionality which builds on top of what is provided.<br/>
+
+Usefull when:<br/>
+Have to be able to assign extra behaviors to objects at runtime without breaking the code that uses these objects.<br/>
+It’s awkward or not possible to extend an object’s behavior using inheritance.<br/>
+It inherits from same interface/class from which the object it decorates inherits.<br/>
 
 Examples: BufferedOutputStream decorates any OutputStream object and adds buffering to file writing operation
 
-### 7.4 Composite
+### 7.4 Composite aka Object Tree
 `Allows to compose objects into tree structures and then work with these structures as if they were individual objects`
 
+Allows to treat them all the same via the common interface, when a method is called, the objects themselves pass the request down the tree.<br/>
+The pattern allows the client code to treat both simple and complex elements uniformly.<br/>
+Once a tree structure is created the client code does not need to worry about whether an object is a leaf node or not.<br/>
 Two basic element types that share a common interface: simple leaves and complex containers. A container can be composed of both leaves and other containers. This lets you construct a nested recursive object structure that resembles a tree<br/>
-Use the pattern when you want the client code to treat both simple and complex elements uniformly
-
 Without Composite pattern client code will have to write different code to handle object which has children. Composite pattern allows client to call a method on object and pattern takes care of handling children if present<br/>
-You can treat them all the same via the common interface. When you call a method, the objects themselves pass the request down the tree
+
+Usefull when:<br/>
+Have to implement a tree-like object structure.<br/>
+Have to treat both simple and complex elements uniformly.<br/>
 
 Examples: UI Frameworks, JSF UIViewRoot
 
 ### 7.5 Facade
 `Provides a simplified interface to a library, a framework, or any other complex set of classes`
 
-A facade should minimize the complexity of subsystems and provide usable interface.<br/>
-Allows to have a weak coupling betweeb subsystems.<br/>
-Provides simple methods that represent a use-case functionality provided by subsystem
+Simplify the usage of a subsystem and to decouple client code from other subsystem classes as much as possible. Client code gets a simplified API.<br/>
+Provides simple methods that represent a use-case functionality provided by subsystem, so each method ideally should correspond to a use-case.<br/>
+Minimize the complexity of subsystems and provide usable interface.<br/>
+
+Usefull when:<br/>
+Have need of a limited but straightforward interface to a complex subsystem.<br/>
+Have to structure a subsystem into layers.<br/>
 
 Example: java.net.URL
 
 ### 7.6 Flyweight aka Cache
 `Allows to fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object`
 
-Intrinsic - state that is shared in every context<br/>
-Extrinsic - context specific state
+Object itself only stores shared state so one instance is shared, client code maintains part of the state that is specific to context.<br/>
 
-Object itself only stores shared state so one instance is shared, client code maintains part of the state that is specific to context
+States:<br/>
+1. Intrinsic - Stored in the Flyweight object itself and is shared in every context.<br/>
+2. Extrinsic - Stored by client code and is a context specific state.<br/>
+
+Usefull when:<br/>
+Have to support a huge number of objects which barely fit into available RAM.<br/>
+Application needs to spawn a huge number of similar objects and they contain duplicate states which can be extracted and shared between multiple objects.<br/>
 
 Example: java.lang.Integer.valueOf uses this pattern to cache Integers
 
 ### 7.7 Proxy
 `Allows to provide a substitute or placeholder for another object`
 
-Applicability: Lazy initialization (virtual proxy), Access control (protection proxy), Local execution of a remote service (remote proxy), Logging requests (logging proxy), Caching request results (caching proxy), Smart reference (dismiss heavyweight object).
-
 Java can create dynamic proxy for a class which implements at least one interface
+
+Usefull for:<br/>
+Lazy initialization (virtual proxy).<br/>
+Access control (protection proxy).<br/>
+Local execution of a remote service (remote proxy).<br/>
+Logging requests (logging proxy).<br/>
+Caching request results (caching proxy).<br/>
+Smart reference (dismiss heavyweight object).<br/>
 
 Examples: Lazy loading of collections by Hibernate
 
 ## 8 - Behavioral Design Patterns
 `Deals with algorithms and the assignment of responsibilities between objects`
 
-### 8.1 Chain of Responsibility
+### 8.1 Chain of Responsibility aka CoR, Chain of Command
 `Allows to pass requests along a chain of handlers, then each handler decides either to process the request or to pass it to the next handler in the chain`
 
-Chain of Responsibility passes a request sequentially along a dynamic chain of potential receivers until one of them handles it.
-A request may go unprocessed and client may not know it<br/>
+Chain of Responsibility passes a request sequentially along a dynamic chain of potential receivers until one of them handles it.<br/>
+A request may go unprocessed and client may not know it.<br/>
 Each handler knows the next one and passes the request object.<br/>
 
 Usefull when:<br/>
-The program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.<br/>
+Have to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.<br/>
 It’s essential to execute several handlers in a particular order or when the set of handlers and their order are supposed to change at runtime.<br/>
 
 Examples: javax.servlet.Filter
@@ -205,6 +250,11 @@ Examples: javax.servlet.Filter
 Allows to represent an operation/request/method-call as object and/or send requests to other parts of the application where they can be executed later.<br/>
 Makes easy to implement reversible operations, queue operations, schedule their execution, or execute them remotely.<br/>
 Command establishes unidirectional connections between senders and receivers.<br/>
+
+Usefull when:<br/>
+Have to parametrize objects with operations.<br/>
+Have to queue operations, schedule their execution, or execute them remotely.<br/>
+Have to implement reversible operations.<br/>
 
 Examples: Runnable
 
