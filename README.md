@@ -46,8 +46,8 @@ Usefull when:<br/>
 * Allows immutable class creation.<br/>
 * Have to construct Composite trees or other complex objects.
 
-Examples: StringBuilder (not 100%) and Calendar
-
+Examples: StringBuilder and Calendar<br/>
+[Conceptual Example (ts)](https://github.com/jackanakin/solid/tree/main/typescript/6%20-%20Creational%20Design%20Patterns/6.1%20Builder/ConceptualExample)<br/>
 [Java Example](https://github.com/jackanakin/solid/tree/main/java/6%20-%20Creational%20Design%20Patterns/6.1%20Builder)
 
 ### 6.2 Simple Factory
@@ -71,8 +71,8 @@ Examples: NumberFormat
 * Subclasses decide which object to instantiate by overriding factory method.<br/>
 * May be combined with Simple Factory.<br/>
 
-Examples: AbstractCollection<E> has an abstract method called iterator()
-
+Examples: AbstractCollection<E> has an abstract method called iterator()<br/>
+[Conceptual Example (ts)](https://github.com/jackanakin/solid/tree/main/typescript/6%20-%20Creational%20Design%20Patterns/6.3%20Factory%20Method/ConceptualExample)<br/>
 [Java Example](https://github.com/jackanakin/solid/tree/main/java/6%20-%20Creational%20Design%20Patterns/6.3%20Factory%20Method)
 
 ### 6.4 Prototype
