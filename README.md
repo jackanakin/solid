@@ -85,8 +85,8 @@ Usefull when:<br/>
 * A complex object that is costly to create may be re-created using and existing instance.<br/>
 * When code shouldn’t depend on the concrete classes of objects that you need to copy.<br/>
 
-Examples: Object.clone()
-
+Examples: Object.clone()<br/>
+[Conceptual Example (ts)](https://github.com/jackanakin/solid/tree/main/typescript/6%20-%20Creational%20Design%20Patterns/6.4%20Prototype/ConceptualExample)<br/>
 [Java Example](https://github.com/jackanakin/solid/tree/main/java/6%20-%20Creational%20Design%20Patterns/6.4%20Prototype)
 
 ### 6.5 Abstract Factory
